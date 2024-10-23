@@ -10,14 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('features', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('route_name');
             $table->string('name');
-            $table->string('description');
-            $table->string('required_credits');
-            $table->boolean('active')->default(true);
+            $table->decimal('price', 10, 2);
+            $table->integer('credits');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('features');
+        Schema::dropIfExists('packages');
     }
 };
